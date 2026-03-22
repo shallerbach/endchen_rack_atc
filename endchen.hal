@@ -1,0 +1,127 @@
+# custom EtherCAT config
+
+loadrt [KINS]KINEMATICS
+loadrt [EMCMOT]EMCMOT servo_period_nsec=[EMCMOT]SERVO_PERIOD num_joints=[KINS]JOINTS num_dio=6 num_aio=3
+
+loadusr -W lcec_conf ethercat-config.xml
+
+loadrt lcec
+loadrt el7_cia402       names=cia402.0,cia402.1,cia402.2
+loadrt or2
+loadrt lut5             names=lut5_estop,lut5_inhibit,lut5_probe_on
+loadrt conv_u32_float   names=conv_toolnum
+loadrt comp             names=comp_tool,comp_probe
+
+addf	lcec.read-all			servo-thread
+
+addf	cia402.0.read-all       servo-thread
+addf	cia402.1.read-all       servo-thread
+addf	cia402.2.read-all       servo-thread
+
+addf	motion-command-handler  servo-thread
+addf	motion-controller       servo-thread
+
+addf	cia402.0.write-all      servo-thread
+addf	cia402.1.write-all      servo-thread
+addf	cia402.2.write-all      servo-thread
+
+addf	lcec.write-all			servo-thread
+
+addf    or2.0                   servo-thread
+addf    lut5_estop              servo-thread
+addf    lut5_inhibit            servo-thread
+addf    lut5_probe_on           servo-thread
+addf    comp_tool               servo-thread
+addf    comp_probe              servo-thread
+addf    conv_toolnum            servo-thread
+
+
+setp iocontrol.0.emc-enable-in 1
+
+setp axis.x.jog-accel-fraction 0.5
+setp axis.y.jog-accel-fraction 0.5
+setp axis.z.jog-accel-fraction 0.5
+
+
+# externe Signalausgänge
+# --- MACHINE-IS-ENABLED ---
+
+# --- COOLANT-MIST ---
+net coolant-mist    =>  lcec.0.EL2002-0.dout-0
+net coolant-mist    <=  iocontrol.0.coolant-mist
+
+
+# externe Signaleingänge
+# --- PROBE-IN ---
+net probe-signal        =>  or2.0.in0              <= lcec.0.EL1088-0.din-0    
+
+
+# --- TOOLSETTER-IN ---
+net toolsetter-signal   =>  or2.0.in1              <= lcec.0.EL1088-0.din-3 
+
+# ---Sonde/Taster Signal (probe signal)---
+net probe-in    <=  or2.0.out   =>  motion.probe-input
+
+
+# --- Spindle ATC ---
+#
+# Relais Outputs
+net tool-release     => motion.digital-out-02 => lcec.0.EL2008-0.dout-0      
+#net tool-clean 
+#net air-sealing 
+#net rack-cover
+
+
+# create signals for tool loading loopback
+net tool-prep-loop      iocontrol.0.tool-prepare    iocontrol.0.tool-prepared
+net tool-change-loop    iocontrol.0.tool-change     iocontrol.0.tool-changed
+
+
+
+# -------------------------------------------- ESTOP --------------------------------------------
+# estop will be triggered by the following events:
+# - VFD communication via RS485 lost
+# - error report from VFD
+# - pushing the emergency stop switch
+# - pneumatic pressure below 7 bar
+# - error from spindle chiller
+
+setp     lut5_estop.function    0x2 
+
+net      estop-vfd-connection   lut5_estop.in-0  <=    vfdmod.rs485.is-connected    #TRUE
+net      estop-vfd-error        lut5_estop.in-1  <=    spindle.0.amp-fault-in       #FALSE
+net      estop-ext              lut5_estop.in-2  <=    lcec.0.EL1008-0.din-0-not    #FALSE
+net      estop-pneumatic        lut5_estop.in-3  <=    lcec.0.EL1008-0.din-1        #FALSE
+net      estop-chiller          lut5_estop.in-4  <=    lcec.0.EL1008-0.din-2-not    #FALSE
+net      estop-signal           lut5_estop.out   =>    iocontrol.0.emc-enable-in
+
+
+
+# -------------------------------------------- SPINDLE INHIBIT --------------------------------------------
+# spindle-inhibit is active when either no tool is inserted and clamped or when a defined probe tool is selected
+# Conditions
+# - Tool in spindle is 0
+# - Tool in spindle is the probe
+# - Tool is not clamped
+# - Tool is unclamped
+
+setp    comp_tool.in0          0
+setp    comp_probe.in0         [PROBE]TOOL_NUMBER
+
+net     tool-u32               conv_toolnum.in     <=    halui.tool.number
+net     tool-float             conv_toolnum.out    =>    comp_tool.in1 comp_probe.in1
+
+setp    lut5_inhibit.function  0xFFEF
+
+net     no-tool-inserted       lut5_inhibit.in-0                            <=  comp_tool.equal             # TRUE
+net     probe-inserted         lut5_inhibit.in-1    lut5_probe_on.in-0      <=  comp_probe.equal            # TRUE
+net     tool-clamped           lut5_inhibit.in-2    motion.digital-in-05    <=  lcec.0.EL1088-0.din-5       # FALSE
+net     tool-unclamped         lut5_inhibit.in-3    motion.digital-in-02    <=  lcec.0.EL1088-0.din-4       # TRUE
+net     spindle-inhibit        lut5_inhibit.out                             =>  spindle.0.inhibit
+
+# ---------------------------------------------- Probe Activation -------------------------------------------
+# Activate the probe when loaded
+
+setp    lut5_probe_on.function  0x2
+
+net     probe_activated         lut5_probe_on.out   =>  lcec.0.EL2002-0.dout-1

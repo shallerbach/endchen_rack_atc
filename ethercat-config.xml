@@ -1,0 +1,103 @@
+<masters>
+<master idx="0" appTimePeriod="1000000" refClockSyncCycles="1">
+
+	<slave idx="0" type="EK1100" name="EK1100" />
+	<slave idx="1" type="EL2002" name="EL2002-0" />
+	<slave idx="2" type="EL2008" name="EL2008-0" />
+	<slave idx="3" type="EL1008" name="EL1008-0" />
+	<slave idx="4" type="EL1008" name="EL1008-1" />
+	<slave idx="5" type="EL1088" name="EL1088-0" />
+
+
+	<slave idx="6" type="generic" vid="00400000" pid="00000715" configPdos="true" name="servo-x">
+		<dcConf assignActivate="300" sync0Cycle="*1" sync0Shift="0"/>
+		<watchdog divider="2498" intervals="1000"/>
+	
+		<syncManager idx="2" dir="out">
+				<pdo idx="1600">
+					<pdoEntry idx="6040" subIdx="00" bitLen="16" halPin="cia-controlword" halType="u32"/>
+					<pdoEntry idx="6060" subIdx="00" bitLen="8" halPin="opmode" halType="s32"/>
+					<pdoEntry idx="607A" subIdx="00" bitLen="32" halPin="target-position" halType="s32"/>
+					<pdoEntry idx="60FF" subIdx="00" bitLen="32" halPin="target-velocity" halType="s32"/>
+					<pdoEntry idx="607C" subIdx="00" bitLen="32" halPin="home-offset" halType="s32"/>
+					<pdoEntry idx="6098" subIdx="00" bitLen="8" halPin="homing-method" halType="s32"/>
+					<pdoEntry idx="6099" subIdx="01" bitLen="32" halPin="homing-high-velocity" halType="u32"/>
+					<pdoEntry idx="6099" subIdx="02" bitLen="32" halPin="homing-low-velocity" halType="u32"/>
+					<pdoEntry idx="609A" subIdx="00" bitLen="32" halPin="homing-acceleration" halType="u32"/>
+				</pdo>
+			</syncManager>
+			<syncManager idx="3" dir="in">
+				<pdo idx="1a00">
+					<pdoEntry idx="6041" subIdx="00" bitLen="16" halPin="cia-statusword" halType="u32"/>
+					<pdoEntry idx="6061" subIdx="00" bitLen="8" halPin="opmode-display" halType="s32"/>
+					<pdoEntry idx="6064" subIdx="00" bitLen="32" halPin="actual-position" halType="s32"/>
+					<pdoEntry idx="606C" subIdx="00" bitLen="32" halPin="actual-velocity" halType="s32"/>
+					<pdoEntry idx="6077" subIdx="00" bitLen="16" halPin="actual-torque" halType="s32"/>
+					<pdoEntry idx="60FD" subIdx="00" bitLen="32" halPin="input-status" halType="u32"/>
+				</pdo>
+		</syncManager>
+		
+	</slave>
+ 
+	<slave idx="7" type="generic" vid="00400000" pid="00000715" configPdos="true" name="servo-y">
+		<dcConf assignActivate="300" sync0Cycle="*1" sync0Shift="0"/>
+		<watchdog divider="2498" intervals="1000"/>
+	
+		<syncManager idx="2" dir="out">
+				<pdo idx="1600">
+					<pdoEntry idx="6040" subIdx="00" bitLen="16" halPin="cia-controlword" halType="u32"/>
+					<pdoEntry idx="6060" subIdx="00" bitLen="8" halPin="opmode" halType="s32"/>
+					<pdoEntry idx="607A" subIdx="00" bitLen="32" halPin="target-position" halType="s32"/>
+					<pdoEntry idx="60FF" subIdx="00" bitLen="32" halPin="target-velocity" halType="s32"/>
+					<pdoEntry idx="607C" subIdx="00" bitLen="32" halPin="home-offset" halType="s32"/>
+					<pdoEntry idx="6098" subIdx="00" bitLen="8" halPin="homing-method" halType="s32"/>
+					<pdoEntry idx="6099" subIdx="01" bitLen="32" halPin="homing-high-velocity" halType="u32"/>
+					<pdoEntry idx="6099" subIdx="02" bitLen="32" halPin="homing-low-velocity" halType="u32"/>
+					<pdoEntry idx="609A" subIdx="00" bitLen="32" halPin="homing-acceleration" halType="u32"/>
+				</pdo>
+			</syncManager>
+			<syncManager idx="3" dir="in">
+				<pdo idx="1a00">
+					<pdoEntry idx="6041" subIdx="00" bitLen="16" halPin="cia-statusword" halType="u32"/>
+					<pdoEntry idx="6061" subIdx="00" bitLen="8" halPin="opmode-display" halType="s32"/>
+					<pdoEntry idx="6064" subIdx="00" bitLen="32" halPin="actual-position" halType="s32"/>
+					<pdoEntry idx="606C" subIdx="00" bitLen="32" halPin="actual-velocity" halType="s32"/>
+					<pdoEntry idx="6077" subIdx="00" bitLen="16" halPin="actual-torque" halType="s32"/>
+					<pdoEntry idx="60FD" subIdx="00" bitLen="32" halPin="input-status" halType="u32"/>
+				</pdo>
+		</syncManager>
+		
+	</slave>
+
+	<slave idx="8" type="generic" vid="00400000" pid="00000715" configPdos="true" name="servo-z">
+		<dcConf assignActivate="300" sync0Cycle="*1" sync0Shift="0"/>
+		<watchdog divider="2498" intervals="1000"/>
+	
+		<syncManager idx="2" dir="out">
+				<pdo idx="1600">
+					<pdoEntry idx="6040" subIdx="00" bitLen="16" halPin="cia-controlword" halType="u32"/>
+					<pdoEntry idx="6060" subIdx="00" bitLen="8" halPin="opmode" halType="s32"/>
+					<pdoEntry idx="607A" subIdx="00" bitLen="32" halPin="target-position" halType="s32"/>
+					<pdoEntry idx="60FF" subIdx="00" bitLen="32" halPin="target-velocity" halType="s32"/>
+					<pdoEntry idx="607C" subIdx="00" bitLen="32" halPin="home-offset" halType="s32"/>
+					<pdoEntry idx="6098" subIdx="00" bitLen="8" halPin="homing-method" halType="s32"/>
+					<pdoEntry idx="6099" subIdx="01" bitLen="32" halPin="homing-high-velocity" halType="u32"/>
+					<pdoEntry idx="6099" subIdx="02" bitLen="32" halPin="homing-low-velocity" halType="u32"/>
+					<pdoEntry idx="609A" subIdx="00" bitLen="32" halPin="homing-acceleration" halType="u32"/>
+				</pdo>
+			</syncManager>
+			<syncManager idx="3" dir="in">
+				<pdo idx="1a00">
+					<pdoEntry idx="6041" subIdx="00" bitLen="16" halPin="cia-statusword" halType="u32"/>
+					<pdoEntry idx="6061" subIdx="00" bitLen="8" halPin="opmode-display" halType="s32"/>
+					<pdoEntry idx="6064" subIdx="00" bitLen="32" halPin="actual-position" halType="s32"/>
+					<pdoEntry idx="606C" subIdx="00" bitLen="32" halPin="actual-velocity" halType="s32"/>
+					<pdoEntry idx="6077" subIdx="00" bitLen="16" halPin="actual-torque" halType="s32"/>
+					<pdoEntry idx="60FD" subIdx="00" bitLen="32" halPin="input-status" halType="u32"/>
+				</pdo>
+		</syncManager>
+		
+	</slave>
+
+</master>
+</masters>

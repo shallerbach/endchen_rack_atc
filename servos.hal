@@ -1,0 +1,94 @@
+#*******************
+#  AXIS X
+#*******************
+
+setp cia402.0.csp-mode  1
+setp cia402.0.pos-scale 26214.4
+
+net x-statusword      lcec.0.servo-x.cia-statusword     => cia402.0.statusword
+net x-opmode-display  lcec.0.servo-x.opmode-display     => cia402.0.opmode-display
+net x-drv-act-pos     lcec.0.servo-x.actual-position    => cia402.0.drv-actual-position
+net x-drv-act-velo    lcec.0.servo-x.actual-velocity    => cia402.0.drv-actual-velocity
+
+net x-enable     <= joint.0.amp-enable-out => cia402.0.enable
+net x-amp-fault  => joint.0.amp-fault-in   <= cia402.0.drv-fault
+net x-pos-cmd    <= joint.0.motor-pos-cmd  => cia402.0.pos-cmd
+net x-pos-fb     => joint.0.motor-pos-fb   <= cia402.0.pos-fb
+
+net x-controlword         cia402.0.controlword          => lcec.0.servo-x.cia-controlword
+net x-modes-of-operation  cia402.0.opmode               => lcec.0.servo-x.opmode
+net x-drv-target-pos      cia402.0.drv-target-position  => lcec.0.servo-x.target-position
+net x-drv-target-velo     cia402.0.drv-target-velocity  => lcec.0.servo-x.target-velocity
+
+# CIA Custom Homing
+setp lcec.0.servo-x.homing-method        [JOINT_0]CIA402_HOMING_METHOD
+setp lcec.0.servo-x.homing-high-velocity [JOINT_0]CIA402_HOMING_SEARCH_VELOCITY
+setp lcec.0.servo-x.homing-low-velocity  [JOINT_0]CIA402_HOMING_LATCH_VELOCITY
+setp lcec.0.servo-x.homing-acceleration  [JOINT_0]CIA402_HOMING_ACCELERATION
+setp lcec.0.servo-x.home-offset          [JOINT_0]CIA402_HOMING_HOME_OFFSET
+
+net x-home-request joint.0.request-custom-homing   cia402.0.home joint.0.index-enable
+net x-homing       joint.0.is-custom-homing        cia402.0.stat-homing
+net x-homed        joint.0.custom-homing-finished  cia402.0.stat-homed
+
+#*******************
+#  AXIS Y
+#*******************
+setp cia402.1.csp-mode  1
+setp cia402.1.pos-scale 26214.4
+
+net y-statusword      lcec.0.servo-y.cia-statusword     => cia402.1.statusword
+net y-opmode-display  lcec.0.servo-y.opmode-display     => cia402.1.opmode-display
+net y-drv-act-pos     lcec.0.servo-y.actual-position    => cia402.1.drv-actual-position
+net y-drv-act-velo    lcec.0.servo-y.actual-velocity    => cia402.1.drv-actual-velocity
+net y-enable     <= joint.1.amp-enable-out => cia402.1.enable
+net y-amp-fault  => joint.1.amp-fault-in   <= cia402.1.drv-fault
+net y-pos-cmd    <= joint.1.motor-pos-cmd  => cia402.1.pos-cmd
+net y-pos-fb     => joint.1.motor-pos-fb   <= cia402.1.pos-fb
+
+net y-controlword         cia402.1.controlword          => lcec.0.servo-y.cia-controlword
+net y-modes-of-operation  cia402.1.opmode               => lcec.0.servo-y.opmode
+net y-drv-target-pos      cia402.1.drv-target-position  => lcec.0.servo-y.target-position
+net y-drv-target-velo     cia402.1.drv-target-velocity  => lcec.0.servo-y.target-velocity
+
+# CIA Custom Homing
+setp lcec.0.servo-y.homing-method        [JOINT_1]CIA402_HOMING_METHOD
+setp lcec.0.servo-y.homing-high-velocity [JOINT_1]CIA402_HOMING_SEARCH_VELOCITY
+setp lcec.0.servo-y.homing-low-velocity  [JOINT_1]CIA402_HOMING_LATCH_VELOCITY
+setp lcec.0.servo-y.homing-acceleration  [JOINT_1]CIA402_HOMING_ACCELERATION
+setp lcec.0.servo-y.home-offset          [JOINT_1]CIA402_HOMING_HOME_OFFSET
+
+net y-home-request joint.1.request-custom-homing   cia402.1.home joint.1.index-enable
+net y-homing       joint.1.is-custom-homing        cia402.1.stat-homing
+net y-homed        joint.1.custom-homing-finished  cia402.1.stat-homed
+
+#*******************
+#  AXIS Z
+#*******************
+setp cia402.2.csp-mode  1
+setp cia402.2.pos-scale 26214.4
+
+net z-statusword      lcec.0.servo-z.cia-statusword     => cia402.2.statusword
+net z-opmode-display  lcec.0.servo-z.opmode-display     => cia402.2.opmode-display
+net z-drv-act-pos     lcec.0.servo-z.actual-position    => cia402.2.drv-actual-position
+net z-drv-act-velo    lcec.0.servo-z.actual-velocity    => cia402.2.drv-actual-velocity
+net z-enable     <= joint.2.amp-enable-out => cia402.2.enable
+net z-amp-fault  => joint.2.amp-fault-in   <= cia402.2.drv-fault
+net z-pos-cmd    <= joint.2.motor-pos-cmd  => cia402.2.pos-cmd
+net z-pos-fb     => joint.2.motor-pos-fb   <= cia402.2.pos-fb
+
+net z-controlword         cia402.2.controlword          => lcec.0.servo-z.cia-controlword
+net z-modes-of-operation  cia402.2.opmode               => lcec.0.servo-z.opmode
+net z-drv-target-pos      cia402.2.drv-target-position  => lcec.0.servo-z.target-position
+net z-drv-target-velo     cia402.2.drv-target-velocity  => lcec.0.servo-z.target-velocity
+
+# CIA Custom Homing
+setp lcec.0.servo-z.homing-method        [JOINT_2]CIA402_HOMING_METHOD
+setp lcec.0.servo-z.homing-high-velocity [JOINT_2]CIA402_HOMING_SEARCH_VELOCITY
+setp lcec.0.servo-z.homing-low-velocity  [JOINT_2]CIA402_HOMING_LATCH_VELOCITY
+setp lcec.0.servo-z.homing-acceleration  [JOINT_2]CIA402_HOMING_ACCELERATION
+setp lcec.0.servo-z.home-offset          [JOINT_2]CIA402_HOMING_HOME_OFFSET
+
+net z-home-request joint.2.request-custom-homing   cia402.2.home joint.2.index-enable
+net z-homing       joint.2.is-custom-homing        cia402.2.stat-homing
+net z-homed        joint.2.custom-homing-finished  cia402.2.stat-homed

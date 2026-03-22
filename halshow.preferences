@@ -1,0 +1,30 @@
+# Halshow settings
+# This file is generated automatically.
+wm geometry . 988x863+710+64
+placeFrames 0.3
+set ::ratio 0.3
+set ::old_w_leftf 160
+set ::watchlist {
+    pin+motion.digital-in-00
+    pin+motion.digital-in-01
+    pin+motion.digital-in-02
+    pin+motion.digital-in-03
+    pin+motion.digital-in-04
+    pin+motion.digital-in-05
+    pin+motion.digital-out-00
+    pin+motion.digital-out-01
+    pin+motion.digital-out-02
+    pin+motion.digital-out-03
+    pin+motion.digital-out-04
+    pin+motion.digital-out-05
+    sig+tool-clamped
+    sig+tool-unclamped
+    sig+tool-release
+}
+set ::workmode watchhal
+set ::watchInterval 100
+set ::col1_width 100
+set ::ffmts 
+set ::ifmts 
+set ::alwaysOnTop 0
+set ::autoSaveWatchlist 1

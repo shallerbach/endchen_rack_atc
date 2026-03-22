@@ -1,0 +1,9 @@
+o<m25> sub
+(PRINT, o<m25>)
+
+o<clamptool> call
+
+(PRINT, o<m25> endsub)
+o<m25> endsub [1]
+
+M2

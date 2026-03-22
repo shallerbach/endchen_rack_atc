@@ -1,0 +1,9 @@
+o<m24> sub
+(PRINT, o<m24>)
+
+o<unclamptool> call
+
+(PRINT, o<m24> endsub)
+o<m24> endsub [1]
+
+M2
