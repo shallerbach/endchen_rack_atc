@@ -66,7 +66,7 @@ net probe-in    <=  or2.0.out   =>  motion.probe-input
 # --- Spindle ATC ---
 #
 # Relais Outputs
-net tool-release     => motion.digital-out-02 => lcec.0.EL2008-0.dout-0      
+net tool-release        motion.digital-out-02 => lcec.0.EL2008-0.dout-0      
 #net tool-clean 
 #net air-sealing 
 #net rack-cover
@@ -120,7 +120,7 @@ net     tool-unclamped         lut5_inhibit.in-3    motion.digital-in-02    <=  
 net     spindle-inhibit        lut5_inhibit.out                             =>  spindle.0.inhibit
 
 # ---------------------------------------------- Probe Activation -------------------------------------------
-# Activate the probe when loaded
+# Activate the probe when in tool holder
 
 setp    lut5_probe_on.function  0x2
 
