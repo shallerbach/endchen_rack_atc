@@ -1,0 +1,11 @@
+component load_conv "calculates percentage of load based on motor Amps";
+
+pin in  float amps;
+pin out float percent;
+
+function _;
+license "GPL"; // indicates GPL v2 or later
+;;
+
+#include <rtapi_math.h>
+percent = round(amps/0.1);

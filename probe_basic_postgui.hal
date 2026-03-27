@@ -1,8 +1,10 @@
 loadrt time
 loadrt not
+loadrt load_conv            names=spindle_load_conv
 
-addf time.0 servo-thread
-addf not.0 servo-thread
+addf time.0                 servo-thread
+addf not.0                  servo-thread
+addf spindle_load_conv      servo-thread
 
 net pdnt.program.is-idle    not.0.in <= halui.program.is-idle
 net pdnt.program.is-paused  halui.program.is-paused => time.0.pause
@@ -22,4 +24,10 @@ net cycle-hours qtpyvcp.timerhours.in <= time.0.hours
 net probe-in  <=  qtpyvcp.probe-led.on
 
 # *** Set line below for actual spindle readout from your hal file ***
-# net spindle-rpm-filtered scale_to_rpm.out  =>  qtpyvcp.spindle-encoder-rpm.in
+# net spindle-rpm-filtered scale_to_rpm.out  =>  qtpyvcp.spindle-encoder-rpm.
+
+
+# Spindle load bar
+setp        qtpyvcp.spindle-load-indicator.max-val 120
+net         spindle-current     vfdmod.parameters.output-current     => spindle_load_conv.amps
+net         spindle-load        qtpyvcp.spindle-load-indicator.in-f  <= spindle_load_conv.percent
