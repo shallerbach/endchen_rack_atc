@@ -6,7 +6,7 @@ loadrt [EMCMOT]EMCMOT servo_period_nsec=[EMCMOT]SERVO_PERIOD num_joints=[KINS]JO
 loadusr -W lcec_conf ethercat-config.xml
 
 loadrt lcec
-loadrt el7_cia402       names=cia402.0,cia402.1,cia402.2
+loadrt A6_cia402        names=cia402.0,cia402.1,cia402.2
 loadrt or2
 loadrt lut5             names=lut5_estop,lut5_inhibit,lut5_probe_on
 loadrt conv_u32_float   names=conv_toolnum
