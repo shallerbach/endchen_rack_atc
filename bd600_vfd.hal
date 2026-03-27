@@ -1,4 +1,4 @@
-loadusr -W vfdmod bd600.ini
+loadusr -W vfdmod bd600_vfd.ini
 
 
 net spindle-vel-cmd-rpm spindle.0.speed-out => vfdmod.spindle.rpm-in
