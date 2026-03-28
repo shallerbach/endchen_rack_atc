@@ -1,8 +1,6 @@
 o<clamptool> sub
 
 M65 P2 ; clamp the tool
-
-(PRINT, Requested tool is #<_selected_tool>)
     
 G4 P0.5
 M66 P5 L3 Q2 ; check the clamped tool sensor
