@@ -11,6 +11,7 @@ loadrt or2
 loadrt lut5             names=lut5_estop,lut5_inhibit,lut5_probe_on
 loadrt conv_u32_float   names=conv_toolnum
 loadrt comp             names=comp_tool,comp_probe
+loadrt timedelay        names=air_seal_delay
 
 addf	lcec.read-all			servo-thread
 
@@ -34,6 +35,7 @@ addf    lut5_probe_on           servo-thread
 addf    comp_tool               servo-thread
 addf    comp_probe              servo-thread
 addf    conv_toolnum            servo-thread
+addf    air_seal_delay          servo-thread
 
 
 setp iocontrol.0.emc-enable-in 1
@@ -66,9 +68,13 @@ net probe-in    <=  or2.0.out   =>  motion.probe-input
 # --- Spindle ATC ---
 #
 # Relais Outputs
+setp air_seal_delay.on-delay    0
+setp air_seal_delay.off-delay   10
+net  spindle-enable  spindle.0.on        => air_seal_delay.in
+net  air-seal-on     air_seal_delay.out  => lcec.0.EL2008-0.dout-2
+
 net tool-release        motion.digital-out-02 => lcec.0.EL2008-0.dout-0      
 #net tool-clean 
-#net air-sealing 
 #net rack-cover
 
 
