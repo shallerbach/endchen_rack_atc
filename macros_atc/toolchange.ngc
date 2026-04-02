@@ -14,8 +14,11 @@ o<toolchange> sub
 
 (PRINT, o<toolchange> selected_tool: #<selected_tool>, tool_in_spindle: #<tool_in_spindle>, selected_pocket: #<selected_pocket>, current_pocket: #<current_pocket>, task: #<_task>)
 
+M64 P6 ; set tool-change-running to true
+
 o100 if [#<_task> EQ 0]
     (DEBUG, Task is null)
+    M65 P6 ; set tool-change-running to false
     o<toolchange> return [999]
 o100 endif (this code eliminates tool missing error on load for multiple use tools)
 
@@ -32,6 +35,7 @@ o100 endif (this code eliminates tool missing error on load for multiple use too
 o110 if [#<selected_tool> EQ #<tool_in_spindle>] ; checks if tool in the spindle is same as requested
     (PRINT, Requested tool already in spindle)
     (PRINT, o<toolchange> endsub)
+    M65 P6 ; set tool-change-running to false
     o<toolchange> endsub [1]
     M2
 o110 endif
@@ -90,6 +94,8 @@ M61 Q#<selected_tool>
 o170 if [1 EQ 1]
     G43 H#<selected_tool>
 o170 endif
+
+M65 P6 ; set tool-change-running to false
 
 o<program_coolant> call
 
