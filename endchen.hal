@@ -128,5 +128,5 @@ net     spindle-inhibit        lut5_inhibit.out                             =>  
 # Activate the probe when in tool holder and not toolchange is running
 setp    lut5_probe_on.function  0x2
 
-net     toolchange-running      lut5_probe_on.in-1  =>  motion.digital-out-06
+net     toolchange-running      lut5_probe_on.in-1  =>  motion.digital-out-06   # signal for tool change running, set in toolchange macro
 net     probe_activated         lut5_probe_on.out   =>  lcec.0.EL2002-0.dout-1
