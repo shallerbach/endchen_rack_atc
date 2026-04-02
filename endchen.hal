@@ -1,13 +1,13 @@
 # custom EtherCAT config
 
 loadrt [KINS]KINEMATICS
-loadrt [EMCMOT]EMCMOT servo_period_nsec=[EMCMOT]SERVO_PERIOD num_joints=[KINS]JOINTS num_dio=6 num_aio=3
+loadrt [EMCMOT]EMCMOT servo_period_nsec=[EMCMOT]SERVO_PERIOD num_joints=[KINS]JOINTS num_dio=7 num_aio=3
 
 loadusr -W lcec_conf ethercat-config.xml
 
 loadrt lcec
 loadrt A6_cia402        names=cia402.0,cia402.1,cia402.2
-loadrt or2
+loadrt or2              names=probe_signal_or
 loadrt lut5             names=lut5_estop,lut5_inhibit,lut5_probe_on
 loadrt conv_u32_float   names=conv_toolnum
 loadrt comp             names=comp_tool,comp_probe
@@ -28,7 +28,7 @@ addf	cia402.2.write-all      servo-thread
 
 addf	lcec.write-all			servo-thread
 
-addf    or2.0                   servo-thread
+addf    probe_signal_or         servo-thread
 addf    lut5_estop              servo-thread
 addf    lut5_inhibit            servo-thread
 addf    lut5_probe_on           servo-thread
@@ -55,14 +55,13 @@ net coolant-mist    <=  iocontrol.0.coolant-mist
 
 # externe Signaleingänge
 # --- PROBE-IN ---
-net probe-signal        =>  or2.0.in0              <= lcec.0.EL1088-0.din-0    
-
+net probe-signal        =>  probe_signal_or.in0              <= lcec.0.EL1088-0.din-0    
 
 # --- TOOLSETTER-IN ---
-net toolsetter-signal   =>  or2.0.in1              <= lcec.0.EL1088-0.din-3 
+net toolsetter-signal   =>  probe_signal_or.in1              <= lcec.0.EL1088-0.din-3 
 
-# ---Sonde/Taster Signal (probe signal)---
-net probe-in    <=  or2.0.out   =>  motion.probe-input
+# ---Probe/Toolsetter Signal (probe signal)---
+net probe-in    <=  probe_signal_or.out   =>  motion.probe-input
 
 
 # --- Spindle ATC ---
@@ -126,8 +125,8 @@ net     tool-unclamped         lut5_inhibit.in-3    motion.digital-in-02    <=  
 net     spindle-inhibit        lut5_inhibit.out                             =>  spindle.0.inhibit
 
 # ---------------------------------------------- Probe Activation -------------------------------------------
-# Activate the probe when in tool holder
-
+# Activate the probe when in tool holder and not toolchange is running
 setp    lut5_probe_on.function  0x2
 
+net     toolchange-running      lut5_probe_on.in-1  =>  motion.digital-out-06
 net     probe_activated         lut5_probe_on.out   =>  lcec.0.EL2002-0.dout-1
