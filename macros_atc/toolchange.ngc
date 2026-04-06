@@ -86,7 +86,7 @@ o160 if [#<selected_tool> GT 0] ; selected tool is not tool 0
     #[4000 + #150] = 0 ; empty the pocket
     #3991 = #<selected_tool> ; Set persistent variable to remember tool in spindle after power cycle
 o160 else
-    M25 ; deactive drawbar
+    o<clamptool> call ; deactive drawbar
 o160 endif
 
 M61 Q#<selected_tool>

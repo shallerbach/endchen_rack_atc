@@ -80,7 +80,7 @@ o200 else
     G1 G53 F[#<rack_traverse_speed>] Y[#<pocket_y>]
 o200 endif
 
-M24
+o<unclamptool> call ; unclamp tool in spindle to release it into pocket
 G0 G53 Z[#<rack_safe_z_height>]
 
 o<m21> endsub

@@ -70,9 +70,9 @@ G90
 G0 G53 Z[#<rack_safe_z_height>]
 G0 G53 X[#<pocket_x>] Y[#<pocket_y>]
 M19 ; spindle orientation
-M24 ; unclamp drawbar to receive tool
+o<unclamptool> call ; unclamp drawbar to receive tool
 G1 G53 F[#<rack_traverse_speed>] Z[#<rack_z_load_height>]
-M25 ; clamp tool in spindle
+o<clamptool> call ; clamp tool in spindle
 
 ; Move tool out of pocket - single axis, correct direction
 o200 if [#<retrieve_axis> EQ 1]
