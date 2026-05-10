@@ -1,0 +1,11 @@
+T1   P0   D+6.000000 ; TOOL 1
+T2   P0   D+4.000000 Z+60.137500 ; 4mm Fasenfräser
+T3   P0   D+6.000000 ; Tool 3
+T4   P0   D+6.000000 ; tool 4
+T5   P0   D+6.000000 ; tool 5
+T6   P0   ; Tool 6
+T7   P0   ; Tool 7
+T33  P0   D+4.000000 ; Flat End Mill
+T52  P0   D+4.000000 ; Chamfer
+T99  P0   D+3.000000 Z+129.852407 ; probe
+T18  P0   D+6.000000 ; Tool 18
