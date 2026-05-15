@@ -1,7 +1,7 @@
 # custom EtherCAT config
 
 loadrt [KINS]KINEMATICS
-loadrt [EMCMOT]EMCMOT servo_period_nsec=[EMCMOT]SERVO_PERIOD num_joints=[KINS]JOINTS num_dio=7 num_aio=3
+loadrt [EMCMOT]EMCMOT base_period_nsec=[EMCMOT]BASE_PERIOD servo_period_nsec=[EMCMOT]SERVO_PERIOD num_joints=[KINS]JOINTS num_dio=7 num_aio=3
 
 loadusr -W lcec_conf ethercat-config.xml
 
@@ -125,7 +125,7 @@ net     tool-unclamped         lut5_inhibit.in-3    motion.digital-in-02    <=  
 net     spindle-inhibit        lut5_inhibit.out                             =>  spindle.0.inhibit
 
 # ---------------------------------------------- Probe Activation -------------------------------------------
-# Activate the probe when in tool holder and not toolchange is running
+# Activate the probe when in tool holder and no toolchange is running
 setp    lut5_probe_on.function  0x2
 
 net     toolchange-running      lut5_probe_on.in-1  =>  motion.digital-out-06   # signal for tool change running, set in toolchange macro
