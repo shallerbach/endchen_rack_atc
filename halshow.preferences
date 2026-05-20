@@ -5,10 +5,6 @@ placeFrames 0.3
 set ::ratio 0.3
 set ::old_w_leftf 160
 set ::watchlist {
-    pin+lcec.0.pll-drift
-    pin+lcec.0.pll-err
-    pin+lcec.0.pll-final
-    pin+lcec.0.pll-out
 }
 set ::workmode watchhal
 set ::watchInterval 100
