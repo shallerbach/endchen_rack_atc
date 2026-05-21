@@ -16,6 +16,8 @@ o<tool_touch_off> sub
 #<tool_setter_offset_direction> = #3013    (sets tool setter offset direction to move tool)
 #<tool_diameter> = #5410    (current tool's diameter used for offseting probe position in x axis)
 
+M64 P5  (Switch tool touch off signal on)
+
 G92.1    (Cancel G92 offset)
 M50 P0
 
@@ -95,6 +97,8 @@ G10 L1 P #5400 Z [#<new_tool_length_offset>]  (5400 = tool number)
 T #5400 G43  H #5400    (enable tool length offset)
 
 M50 P1  (reinstate feedrate override)
+
+M65 P5  (Switch tool touch off signal off)
 
 o<tool_touch_off> endsub
 
