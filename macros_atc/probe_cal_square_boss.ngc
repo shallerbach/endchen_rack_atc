@@ -26,6 +26,11 @@ o<probe_cal_square_boss> sub
   #<y_cal_width> = #3035          (=0)
   #<sq_cal_axis> = #3036          (=0)
 
+  M66 P3 L4 Q2 ; check if the probe has errors
+  o99 if [#5399 LT 0]
+        (abort, Probing failed. Check probe connection and battery) ; abort if probe has errors
+  o99 endif
+
   (Cancel G92 offsets)
   G92.1
 

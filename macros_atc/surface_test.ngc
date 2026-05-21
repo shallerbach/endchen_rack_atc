@@ -1,4 +1,10 @@
 o<surface_test> sub
+
+  M66 P3 L4 Q2 ; check if the probe has errors
+  o99 if [#5399 LT 0]
+        (abort, Probing failed. Check probe connection and battery) ; abort if probe has errors
+  o99 endif
+
   ;(DEBUG, SURFACE_TEST.NGC)
   M64 P0  (turn off compensation)
   ;T1 M6 (Install probe)

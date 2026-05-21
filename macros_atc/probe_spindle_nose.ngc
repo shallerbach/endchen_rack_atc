@@ -17,6 +17,8 @@ o<probe_spindle_nose> sub
   #<max_z_distance> = #3007       (=12.5)
   #<retract_distance> = #3009     (=0.1000)
 
+  M64 P5  (Switch tool touch off signal on)
+
   (Cancel G92 offsets)
   G92.1
   (Cancel Feedrate Override)
@@ -74,6 +76,8 @@ o<probe_spindle_nose> sub
   G53 G0 Z0.0
 
   M50 P1 (Reinstate Feedrate Override)
+
+  M65 P5  (Switch tool touch off signal off)
 
 o<probe_spindle_nose> endsub
 

@@ -25,6 +25,10 @@ o<probe_front_right_top_corner> sub
   #<probe_mode> = #3030           (=0)
   #<calibration_offset> = #3032   (=0)
 
+  M66 P3 L4 Q2 ; check if the probe has errors
+  o99 if [#5399 LT 0]
+        (abort, Probing failed. Check probe connection and battery) ; abort if probe has errors
+  o99 endif
 
   (Cancel G92 offsets)
   G92.1

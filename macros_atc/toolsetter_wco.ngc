@@ -20,6 +20,8 @@ o<toolsetter_wco> sub
   #<tool_diameter_offset_mode> = #3012    (activates the tool diameter offset position for probe subroutine section)
   #<tool_diameter> = #5410    (current tool's diameter used for offseting probe position in x axis)
  
+  M64 P5  (Switch tool touch off signal on)
+
   (start with an m6, do all the standard m6 stuff and then touch off -TMC)
   M6
 
@@ -87,6 +89,8 @@ o<toolsetter_wco> sub
 
   (Reinstate Feedrate Override)
   M50 P1
+
+  M65 P5  (Switch tool touch off signal off)
 
 o<toolsetter_wco> endsub
 

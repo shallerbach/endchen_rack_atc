@@ -18,6 +18,11 @@ o<probe_z_minus_sub> sub
   #<z_clearance> = #6
   #<probe_mode> = #7
 
+  M66 P3 L4 Q2 ; check if the probe has errors
+  o99 if [#5399 LT 0]
+        (abort, Probing failed. Check probe connection and battery) ; abort if probe has errors
+  o99 endif
+
   (Cancel G92 offsets)
   G92.1
 

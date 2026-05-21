@@ -7,7 +7,7 @@ loadusr -W lcec_conf ethercat-config.xml
 
 loadrt lcec
 loadrt cia402           count=3
-loadrt or2              names=probe_signal_or
+loadrt or2              names=probe_signal_or,probe_error_or
 loadrt lut5             names=lut5_estop,lut5_inhibit,lut5_probe_on
 loadrt conv_u32_float   names=conv_toolnum
 loadrt comp             names=comp_tool,comp_probe
@@ -30,6 +30,7 @@ addf	cia402.2.write-all      servo-thread
 addf	lcec.write-all			servo-thread
 
 addf    probe_signal_or         servo-thread
+addf    probe_error_or          servo-thread
 addf    lut5_estop              servo-thread
 addf    lut5_inhibit            servo-thread
 addf    lut5_probe_on           servo-thread
@@ -56,21 +57,30 @@ net coolant-mist    <=  iocontrol.0.coolant-mist
 
 
 # externe Signaleingänge
-# --- PROBE-IN ---
-net probe-signal        =>  probe_signal_or.in0     <= lcec.0.EL1088-0.din-0    
+# --- PROBE ---
+net probe_error_signal      => lcec.0.EL1088-0.din-1
+net probe_error_signal      <= probe_error_or.in0
 
-# --- TOOLSETTER-IN ---
-net toolsetter_input    => lcec.0.EL1088-0.din-3
-net toolsetter_input    <= and_toolsetter.in0
+net probe_batt_low          => lcec.0.EL1088-0.din-2   
+net probe_batt_low          <= probe_error_or.in1
 
-net tool_measurement_running    => motion.digital-out-05
-net tool_measurement_running    <= and_toolsetter.in1
+net probe_error             => probe_error_or.out
+net probe_error             <= motion.digital-in-03
 
-net toolsetter_signal           => and_toolsetter.out
-net toolsetter_signal           => probe_signal_or.in1 
+net probe-signal            => probe_signal_or.in0     <= lcec.0.EL1088-0.din-0    
+
+# --- TOOLSETTER ---
+net toolsetter_input        => lcec.0.EL1088-0.din-3
+net toolsetter_input        <= and_toolsetter.in0
+
+net tool_touch_off_running  => motion.digital-out-05
+net tool_touch_off_running  <= and_toolsetter.in1
+
+net toolsetter_signal       => and_toolsetter.out
+net toolsetter_signal       => probe_signal_or.in1 
 
 # ---Probe/Toolsetter Signal (probe signal)---
-net probe-in    <=  probe_signal_or.out   =>  motion.probe-input
+net probe-in                <= probe_signal_or.out     =>  motion.probe-input
 
 
 # --- Spindle ATC ---

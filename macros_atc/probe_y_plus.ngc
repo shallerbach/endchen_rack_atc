@@ -19,6 +19,11 @@ o<probe_y_plus> sub
   #<xy_clearance> = #6
   #<calibration_offset> = #7
 
+  M66 P3 L4 Q2 ; check if the probe has errors
+  o99 if [#5399 LT 0]
+        (abort, Probing failed. Check probe connection and battery) ; abort if probe has errors
+  o99 endif
+
   (Cancel G92 offsets)
   G92.1
 
