@@ -5,6 +5,18 @@ o<surface_test> sub
         (abort, Probing failed. Check probe connection and battery) ; abort if probe has errors
   o99 endif
 
+  #3050 = 0
+  #3051 = 0
+  #3052 = 565
+  #3053 = 522
+  #3054 = 50
+  #3055 = 200
+  #3056 = 50
+  #3057 = -75
+  #3058 = -85
+
+
+
   ;(DEBUG, SURFACE_TEST.NGC)
   M64 P0  (turn off compensation)
   ;T1 M6 (Install probe)
@@ -18,7 +30,7 @@ o<surface_test> sub
   #<safe_z> = #3057 ;(debug, safe_z: [#<safe_z>])
   #<search_z> = #3058 ;(debug, search_z: [#<search_z>])
            
-  ;(PROBEOPEN filename.txt)
+  (PROBEOPEN surface_50.txt)
 
   G0 Z#<safe_z>
   #<y> = #<y0>
@@ -32,10 +44,10 @@ o<surface_test> sub
     o102 endwhile
     
     #<y> = [#<y>+#<step>]
-    #<x> = [#<x0>+#<width>]
+    #<x> = [#<x>-#<step>]
     
     o103 while [#<x> GE #<x0>]
-     G0 X#<x> Y#<y>
+      G0 X#<x> Y#<y>
       G38.2 Z#<search_z> F#<search_feed>
       G0 Z#<safe_z>
       #<x> = [#<x>-#<step>]
@@ -44,7 +56,7 @@ o<surface_test> sub
     #<y> = [#<y>+#<step>]
   o101 endwhile
 
-  ;(PROBECLOSE)
+  (PROBECLOSE)
 o<surface_test> endsub
 
 M2
