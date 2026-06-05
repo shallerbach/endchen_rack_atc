@@ -43,9 +43,9 @@ addf    and_toolsetter          servo-thread
 
 setp iocontrol.0.emc-enable-in 1
 
-setp axis.x.jog-accel-fraction 0.5
-setp axis.y.jog-accel-fraction 0.5
-setp axis.z.jog-accel-fraction 0.5
+setp axis.x.jog-accel-fraction 0.4
+setp axis.y.jog-accel-fraction 0.4
+setp axis.z.jog-accel-fraction 0.4
 
 
 # externe Signalausgänge
