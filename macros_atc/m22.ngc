@@ -15,6 +15,8 @@ o<m22> sub
 #<pocket_1_x_clearance>   = #3987
 #<pocket_1_y_clearance>   = #3988
 
+#<rack_toolholder_top>    = #3974
+
 ; --- Calculate pocket position ---
 #<dx> = [#<rack_pocket_2_x> - #<rack_pocket_1_x>]
 #<dy> = [#<rack_pocket_2_y> - #<rack_pocket_1_y>]
@@ -69,10 +71,16 @@ o100 endif
 G90
 G0 G53 Z[#<rack_safe_z_height>]
 G0 G53 X[#<pocket_x>] Y[#<pocket_y>]
-M19 ; spindle orientation
+
+
+G0 G53 Z[#<rack_toolholder_top>]    ; Move Z to the top of the tool holders
 o<unclamptool> call ; unclamp drawbar to receive tool
+M64 P3          ; Cone cleaning on
+
 G1 G53 F[#<rack_traverse_speed>] Z[#<rack_z_load_height>]
 o<clamptool> call ; clamp tool in spindle
+
+M65 P3 ; Cone cleaning off
 
 ; Move tool out of pocket - single axis, correct direction
 o200 if [#<retrieve_axis> EQ 1]

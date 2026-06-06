@@ -47,8 +47,8 @@ settings:
     default_value: True
 
   rack-atc-setup.user-param-1:
-    description: user param label name
-    default_value: user param 1 
+    description: Z-Height top of tool holders
+    default_value: Tool Holder Top 
     persistent: true
 
   rack-atc-setup.user-param-2:

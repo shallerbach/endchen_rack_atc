@@ -79,7 +79,7 @@ net tool_touch_off_running  <= and_toolsetter.in1
 net toolsetter_signal       => and_toolsetter.out
 net toolsetter_signal       => probe_signal_or.in1 
 
-# ---Probe/Toolsetter Signal (probe signal)---
+# --- Probe/Toolsetter Signal (probe signal) ---
 net probe-in                <= probe_signal_or.out     =>  motion.probe-input
 
 
@@ -92,7 +92,7 @@ net  spindle-enable  spindle.0.on        => air_seal_delay.in
 net  air-seal-on     air_seal_delay.out  => lcec.0.EL2008-0.dout-2
 
 net tool-release        motion.digital-out-02 => lcec.0.EL2008-0.dout-0      
-#net tool-clean 
+net tool-clean          motion.digital-out-03 => lcec.0.EL2008-0.dout-1
 #net rack-cover
 
 
