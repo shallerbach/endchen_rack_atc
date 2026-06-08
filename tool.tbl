@@ -1,11 +1,5 @@
-T1   P0   D+6.000000 ; TOOL 1
-T2   P0   D+4.000000 Z+58.079250 ; 4mm Fasenfräser
-T3   P0   D+6.000000 ; Tool 3
-T4   P0   D+6.000000 ; tool 4
-T5   P0   D+6.000000 ; tool 5
-T6   P0   ; Tool 6
+T2   P0   D+4.000000 Z+58.081250 ; 4mm Fasenfräser
+T4   P0   D+4.000000 Z+63.142250 ; DREANIQUE DSA1F-D4.0-L15
 T7   P0   D+20.560000 Z+41.205000 ; PCD Face Mill
-T18  P0   D+6.000000 ; Tool 18
-T33  P0   D+4.000000 ; Flat End Mill
-T52  P0   D+4.000000 ; Chamfer
+T13  P0   D+4.000000 Z+80.809750 ; Sorotec Schaumstoff d=4.0
 T99  P0   D+2.990000 Z+129.318250 ; probe
