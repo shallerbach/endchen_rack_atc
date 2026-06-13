@@ -1,56 +1,55 @@
-;Tool  Pocket Z Offset     Diameter     Remark
-T1     P0     Z+0.000000   D+2.000000   ; Dreanique DSA1F-D2.0-L08
-T2     P0     Z+0.000000   D+3.100000   ; Dreanique DSA1F-D3.1-L12
-T3     P0     Z+0.000000   D+4.000000   ; Dreanique DSA1F-D4.0-L12
-T4     P0     Z+0.000000   D+4.000000   ; Dreanique DSA1F-D4.0-L15
-T5     P0     Z+0.000000   D+6.000000   ; Dreanique DSA1F-D6.0-L15
-T6     P0     Z+0.000000   D+6.000000   ; Dreanique DSA1F-D6.0-L22
-T7     P0     Z+0.000000   D+6.000000   ; Dreanique DW1F-D6.0-L16(45)-L100
-T8     P0     Z+0.000000   D+8.000000   ; Dreanique DSA1F-D8.0-L22
-T9     P0     Z+0.000000   D+10.000000  ; Dreanique DSA1F-D10.0-L42
-T20    P0     Z+0.000000   D+1.000000   ; Dreanique AL-2E-D1.0
-T21    P0     Z+0.000000   D+2.000000   ; Sorotec L2SA D2.0-L12
-T22    P0     Z+0.000000   D+4.000000   ; Dreanique AU2E-D4.0-H4
-T23    P0     Z+0.000000   D+5.000000   ; Dreanique AL-2E-D5.0
-T24    P0     Z+0.000000   D+6.000000   ; Dreanique AL-2E-D6.0
-T25    P0     Z+0.000000   D+8.000000   ; Dreanique AU2EL-D8.0
-T40    P0     Z+0.000000   D+1.500000   ; Dreanique DAU3E-D1.5-L4.5
-T41    P0     Z+0.000000   D+2.000000   ; Dreanique DAU3E-D2.0-L6
-T42    P0     Z+0.000000   D+6.000000   ; Dreanique DAU3E-D6.0-L18
-T43    P0     Z+0.000000   D+8.000000   ; Dreanique DAU3E-D8.0-L24
-T60    P0     Z+0.000000   D+3.000000   ; HC VHM Radius R=1.5
-T61    P0     Z+0.000000   D+4.000000   ; BB Ball Nose R2*4*50
-T62    P0     Z+0.000000   D+4.000000   ; BB Ball Nose 3F 4R0.5*16*75
-T63    P0     Z+0.000000   D+6.000000   ; Sorotec VHM Bull Nose D6.0-R0.5-L21
-T80    P0     Z+0.000000   D+4.000000   ; BB Chamfer 4*90
-T81    P0     Z+0.000000   D+5.000000   ; BB Chamfer 3F 5*120
-T82    P0     Z+0.000000   D+6.000000   ; BB Chamfer 3F 6*90
-T83    P0     Z+0.000000   D+6.000000   ; BB Backside Chamfer 6*90*D3
-T84    P0     Z+0.000000   D+8.000000   ; BB Chamfer 3F 8*90 BF2055
-T100   P0     Z+0.000000   D+2.400000   ; BB 1T-M3*0.5 BC2055
-T101   P0     Z+0.000000   D+3.150000   ; BB 1T-M4*0.7 BC2055
-T102   P0     Z+0.000000   D+3.900000   ; BB 1T-M5*0.8 BC2055
-T103   P0     Z+0.000000   D+4.800000   ; VHM M6 x 1
-T104   P0     Z+0.000000   D+5.900000   ; BB 1T-M8*1.25 BC2055
-T105   P0     Z+0.000000   D+5.900000   ; BB 1T-M8*1.25*100 BC2055
-T120   P0     Z+0.000000   D+2.000000   ; Sorotec LBST D2.0
-T121   P0     Z+0.000000   D+2.500000   ; Sorotec LBST D2.5
-T122   P0     Z+0.000000   D+2.500000   ; BB Drill D2.5
-T123   P0     Z+0.000000   D+3.000000   ; BB Spot Drill D3.0
-T124   P0     Z+0.000000   D+3.200000   ; Sorotec LBST D3.2
-T125   P0     Z+0.000000   D+3.500000   ; BB Drill D3.5
-T126   P0     Z+0.000000   D+4.200000   ; Sorotec LBST D4.2
-T127   P0     Z+0.000000   D+4.500000   ; BB Drill D4.5
-T128   P0     Z+0.000000   D+5.000000   ; Sorotec LBST D5.0
-T129   P0     Z+0.000000   D+5.800000   ; BB Drill D5.8
-T130   P0     Z+0.000000   D+6.000000   ; BB Drill D6.0
-T131   P0     Z+0.000000   D+6.000000   ; BB Spot Drill D6.0
-T150   P0     Z+0.000000   D+20.000000  ; HC Planfräser D20 / S4 / Z2
-T151   P0     Z+0.000000   D+32.000000  ; Planfräser D32 / S8 / Z3
-T170   P0     Z+0.000000   D+1.000000   ; VHM Holzfräser D1.0-L6
-T171   P0     Z+0.000000   D+2.000000   ; VHM Holzfräser D4.0-L=8
-T172   P0     Z+0.000000   D+4.000000   ; 3-Schneider Schaumstoff D4.0-L45
-T173   P0     Z+0.000000   D+6.000000   ; Dreanique ST3FK-D6.0-L22
-T174   P0     Z+0.000000   D+8.000000   ; Dreanique ST3FK-D8.0-L28
-T175   P0     Z+0.000000   D+8.000000   ; Dreanique ST3FK-D8.0-L32
-T999   P0     Z+0.000000   D+3.000000   ; 3D Probe
+T1   P0   D+2.000000 ; Dreanique DSA1F-D2.0-L08
+T2   P0   D+3.100000 ; Dreanique DSA1F-D3.1-L12
+T3   P0   D+4.000000 ; Dreanique DSA1F-D4.0-L12
+T4   P0   D+4.000000 ; Dreanique DSA1F-D4.0-L15
+T5   P0   D+6.000000 ; Dreanique DSA1F-D6.0-L15
+T6   P0   D+6.000000 ; Dreanique DSA1F-D6.0-L22
+T7   P0   D+6.000000 ; Dreanique DW1F-D6.0-L16(45)-L100
+T8   P0   D+8.000000 ; Dreanique DSA1F-D8.0-L22
+T9   P0   D+10.000000 ; Dreanique DSA1F-D10.0-L42
+T20  P0   D+1.000000 ; Dreanique AL-2E-D1.0
+T21  P0   D+2.000000 ; Sorotec L2SA D2.0-L12
+T22  P0   D+4.000000 ; Dreanique AU2E-D4.0-H4
+T23  P0   D+5.000000 ; Dreanique AL-2E-D5.0
+T24  P0   D+6.000000 ; Dreanique AL-2E-D6.0
+T25  P0   D+8.000000 ; Dreanique AU2EL-D8.0
+T40  P0   D+1.500000 ; Dreanique DAU3E-D1.5-L4.5
+T41  P0   D+2.000000 ; Dreanique DAU3E-D2.0-L6
+T42  P0   D+6.000000 ; Dreanique DAU3E-D6.0-L18
+T43  P0   D+8.000000 ; Dreanique DAU3E-D8.0-L24
+T60  P0   D+3.000000 ; HC VHM Radius R=1.5
+T61  P0   D+4.000000 ; BB Ball Nose R2*4*50
+T62  P0   D+4.000000 ; BB Ball Nose 3F 4R0.5*16*75
+T63  P0   D+6.000000 ; Sorotec VHM Bull Nose D6.0-R0.5-L21
+T80  P0   D+4.000000 ; BB Chamfer 4*90
+T81  P0   D+5.000000 ; BB Chamfer 3F 5*120
+T82  P0   D+6.000000 ; BB Chamfer 3F 6*90
+T83  P0   D+6.000000 ; BB Backside Chamfer 6*90*D3
+T84  P0   D+8.000000 ; BB Chamfer 3F 8*90 BF2055
+T100 P0   D+2.400000 ; BB 1T-M3*0.5 BC2055
+T101 P0   D+3.150000 ; BB 1T-M4*0.7 BC2055
+T102 P0   D+3.900000 ; BB 1T-M5*0.8 BC2055
+T103 P0   D+4.800000 ; VHM M6 x 1
+T104 P0   D+5.900000 ; BB 1T-M8*1.25 BC2055
+T105 P0   D+5.900000 ; BB 1T-M8*1.25*100 BC2055
+T120 P0   D+2.000000 ; Sorotec LBST D2.0
+T121 P0   D+2.500000 ; Sorotec LBST D2.5
+T122 P0   D+2.500000 ; BB Drill D2.5
+T123 P0   D+3.000000 ; BB Spot Drill D3.0
+T124 P0   D+3.200000 ; Sorotec LBST D3.2
+T125 P0   D+3.500000 ; BB Drill D3.5
+T126 P0   D+4.200000 ; Sorotec LBST D4.2
+T127 P0   D+4.500000 ; BB Drill D4.5
+T128 P0   D+5.000000 ; Sorotec LBST D5.0
+T129 P0   D+5.800000 ; BB Drill D5.8
+T130 P0   D+6.000000 ; BB Drill D6.0
+T131 P0   D+6.000000 ; BB Spot Drill D6.0
+T150 P0   D+20.000000 ; HC Planfräser D20 / S4 / Z2
+T151 P0   D+32.000000 ; Planfräser D32 / S8 / Z3
+T170 P0   D+1.000000 ; VHM Holzfräser D1.0-L6
+T171 P0   D+2.000000 ; VHM Holzfräser D4.0-L=8
+T172 P0   D+4.000000 Z+80.820443 ; 3-Schneider Schaumstoff D4.0-L45
+T173 P0   D+6.000000 ; Dreanique ST3FK-D6.0-L22
+T174 P0   D+8.000000 ; Dreanique ST3FK-D8.0-L28
+T175 P0   D+8.000000 ; Dreanique ST3FK-D8.0-L32
+T999 P0   D+3.000000 Z+129.330441 ; 3D Probe
