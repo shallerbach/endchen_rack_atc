@@ -2,7 +2,7 @@
 #  AXIS X
 #*******************
 setp cia402.0.csp-mode  1
-setp cia402.0.pos-scale 4000
+setp cia402.0.pos-scale 209715.2
 
 # Motion <-> cia402
 net x-enable        <= joint.0.amp-enable-out  => cia402.0.enable
@@ -27,7 +27,7 @@ net x-drv-target-vel   cia402.0.drv-target-velocity => lcec.0.servo-x.target-vel
 #  AXIS Y
 #*******************
 setp cia402.1.csp-mode  1
-setp cia402.1.pos-scale 4000
+setp cia402.1.pos-scale 209715.2
 
 # Motion <-> cia402
 net y-enable        <= joint.1.amp-enable-out  => cia402.1.enable
@@ -52,7 +52,7 @@ net y-drv-target-vel   cia402.1.drv-target-velocity => lcec.0.servo-y.target-vel
 #  AXIS Z
 #*******************
 setp cia402.2.csp-mode  1
-setp cia402.2.pos-scale 4000
+setp cia402.2.pos-scale 209715.2
 
 # Motion <-> cia402
 net z-enable        <= joint.2.amp-enable-out  => cia402.2.enable
