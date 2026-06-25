@@ -119,45 +119,6 @@
      </property>
     </widget>
    </item>
-   <item row="2" column="0">
-    <widget class="ActionButton" name="flood_button">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="minimumSize">
-      <size>
-       <width>135</width>
-       <height>42</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>16777215</width>
-       <height>42</height>
-      </size>
-     </property>
-     <property name="focusPolicy">
-      <enum>Qt::NoFocus</enum>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QPushButton {
-   	font: 15pt &quot;Bebas Kai&quot;;
-}</string>
-     </property>
-     <property name="text">
-      <string>Flood</string>
-     </property>
-     <property name="checkable">
-      <bool>true</bool>
-     </property>
-     <property name="actionName" stdset="0">
-      <string>coolant.flood.toggle</string>
-     </property>
-    </widget>
-   </item>
    <item row="1" column="2">
     <widget class="ActionButton" name="single_block_button">
      <property name="sizePolicy">
@@ -191,45 +152,6 @@
      </property>
      <property name="actionName" stdset="0">
       <string>program.step</string>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="0">
-    <widget class="ActionButton" name="mist_button">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-       <horstretch>1</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="minimumSize">
-      <size>
-       <width>135</width>
-       <height>42</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>16777215</width>
-       <height>42</height>
-      </size>
-     </property>
-     <property name="focusPolicy">
-      <enum>Qt::NoFocus</enum>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QPushButton {
-   	font: 15pt &quot;Bebas Kai&quot;;
-}</string>
-     </property>
-     <property name="text">
-      <string>Mist</string>
-     </property>
-     <property name="checkable">
-      <bool>true</bool>
-     </property>
-     <property name="actionName" stdset="0">
-      <string>coolant.mist.toggle</string>
      </property>
     </widget>
    </item>
@@ -393,6 +315,45 @@
        <horstretch>1</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <widget class="ActionButton" name="mist_button">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+       <horstretch>1</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>135</width>
+       <height>42</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>42</height>
+      </size>
+     </property>
+     <property name="focusPolicy">
+      <enum>Qt::NoFocus</enum>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+   	font: 15pt &quot;Bebas Kai&quot;;
+}</string>
+     </property>
+     <property name="text">
+      <string>Mist</string>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <property name="actionName" stdset="0">
+      <string>coolant.mist.toggle</string>
      </property>
     </widget>
    </item>
