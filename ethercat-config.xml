@@ -9,7 +9,7 @@
 	<slave idx="5" type="EL1088" name="EL1088-0" />
 
 	<slave idx="6" type="generic" vid="00004321" pid="000000d0" configPdos="true" name="servo-x">
-		<dcConf assignActivate="300" sync0Cycle="*1" sync0Shift="0"/>
+		<dcConf assignActivate="300" sync0Cycle="*1" sync0Shift="500000"/>
 		<watchdog divider="2498" intervals="1000"/>
 	
 		<syncManager idx="2" dir="out">
@@ -32,7 +32,7 @@
 	</slave>
 
 	<slave idx="7" type="generic" vid="00004321" pid="000000d0" configPdos="true" name="servo-y">
-		<dcConf assignActivate="300" sync0Cycle="*1" sync0Shift="0"/>
+		<dcConf assignActivate="300" sync0Cycle="*1" sync0Shift="500000"/>
 		<watchdog divider="2498" intervals="1000"/>
 	
 		<syncManager idx="2" dir="out">
@@ -55,7 +55,7 @@
 	</slave>
 
 	<slave idx="8" type="generic" vid="00004321" pid="000000d0" configPdos="true" name="servo-z">
-		<dcConf assignActivate="300" sync0Cycle="*1" sync0Shift="0"/>
+		<dcConf assignActivate="300" sync0Cycle="*1" sync0Shift="500000"/>
 		<watchdog divider="2498" intervals="1000"/>
 	
 		<syncManager idx="2" dir="out">

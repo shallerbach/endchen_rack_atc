@@ -5,6 +5,25 @@ placeFrames 0.3
 set ::ratio 0.3
 set ::old_w_leftf 160
 set ::watchlist {
+    pin+vfdmod.spindle.at-speed
+    pin+vfdmod.spindle.rpm-in
+    pin+vfdmod.spindle.rpm-out
+    pin+vfdmod.control.fault-reset
+    pin+vfdmod.control.run-reverse
+    pin+vfdmod.parameters.run-speed
+    pin+vfdmod.parameters.spindle-load-speed
+    pin+vfdmod.parameters.spindle-run-time
+    pin+vfdmod.parameters.freq-running
+    pin+vfdmod.parameters.fault-code
+    pin+vfdmod.parameters.bus-voltage
+    pin+vfdmod.control.run-forward
+    pin+spindle_load_conv.amps
+    pin+spindle_load_conv.percent
+    pin+spindle_load_conv.time
+    pin+spindle.0.brake
+    pin+vfdmod.rs485.error-count
+    pin+vfdmod.rs485.is-connected
+    pin+vfdmod.rs485.last-error
 }
 set ::workmode watchhal
 set ::watchInterval 100
